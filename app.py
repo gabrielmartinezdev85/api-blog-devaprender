@@ -4,6 +4,7 @@ import json
 import jwt
 from datetime import datetime, timedelta
 from functools import wraps
+import os
 # Rota padrão - GET https://localhost:5000
 
 
@@ -202,5 +203,5 @@ def excluir_autor(autor, id_autor):
 
     return jsonify({'mensagem': 'Autor excluído com sucesso!'})
 
-
-app.run(port=5000, host='localhost', debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
